@@ -24,7 +24,9 @@ class Blog extends CI_Controller {
 	}
 
 	public function Bio(){
-		$this->load->view('Blog');
+		$this->load->model('bio');
+		$biodata = $this->bio->getdata();
+		$this->load->view('Blog', $biodata);
 	}
 
 

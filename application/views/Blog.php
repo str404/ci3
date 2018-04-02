@@ -175,16 +175,16 @@ div.transbox p {
   <p align="center">
     Selamat datang di artikel pertama saya. Kali ini saya akan memperkenalkan siapa saya sebenarnya. Berikut profil saya :
     <ul class="style12">
-      <li>Nama Lengkap : Muhammad Satria Ramadhana Pratama</li>
-      <li>Nama panggilan : Satria</li>
-      <li>IGN: str404, whoami</li>
-      <li>TTL : Malang, 18 Januari 1998</li>
-      <li>Umur : 20 tahun</li>
-      <li>Anak ke : 1</li>
-      <li>Saudara : 4</li>
-      <li>Alamat : Villa Sengkaling Blok GG-21</li>
-      <li>Hobi : Membaca, bermain game</li>
-      <li>Jenjang pendidikan : SD(MIN Malang 1), SMP(MTsN Malang 1), SMA(SMAN 9 Malang), D3(Politeknik Negeri Malang)</li>
+      <li>Nama Lengkap : <?php echo $nama;?></li>
+      <li>Nama panggilan : <?php echo $panggilan;?></li>
+      <li>IGN: <?php echo $ign;?></li>
+      <li>TTL : <?php echo $ttl;?></li>
+      <li>Umur : <?php echo $umur;?></li>
+      <li>Anak ke : <?php echo $anak;?></li>
+      <li>Saudara : <?php echo $saudara;?></li>
+      <li>Alamat : <?php echo $alamat;?></li>
+      <li>Hobi : <?php echo $hobi;?></li>
+      <li>Jenjang pendidikan : <?php echo $pendidikan;?></li>
     </ul>
 </p>
 </div>
