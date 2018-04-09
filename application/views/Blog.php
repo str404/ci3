@@ -26,7 +26,7 @@
   #section31 {padding-top:50px;height:1000px;color: #fff;}
   #section32 {padding-top:50px;height:1590px;color: #fff;}
   #section33 {padding-top:50px;height:1550px;color: #fff;}
-  #section4 {padding-top:50px;height:1000px;color: #fff; }
+  #section4 {padding-top:50px;height:1100px;color: #fff; }
   #section5 {padding-top:50px;height:3900px;color: #fff; }
 
   .style2 {color: #FF0000; font-family: Georgia, "Times New Roman", Times, serif; }
@@ -90,6 +90,8 @@ div.transbox p {
           <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
       <ul class="dropdown-menu">
+            <li><a href="<?php echo site_url('Blog/create')?>">Create</a></li>
+            <li><a href="<?php echo site_url('Blog/bio')?>">Beranda</a></li>
             <li><a href="#section4">Biodata</a></li>
             <li><a href="#section5">Game Favorit</a></li>
             <li><a href="#section1">Web Favorit</a></li>
@@ -168,24 +170,15 @@ div.transbox p {
 <div id="section4" class="container-fluid">
 <div class="transbox">
   <div align="center" class="style7">
-    <p>Biodata</p>
+    <?php 
+    foreach($blog as $u){ 
+    ?>
+    <p><?php echo $u->judul?></p>
     </div>
-    <br>
+    <p align="center"> <?php echo $u->tanggal ?> / by : <?php echo $u->author ?></p>
     <div align="center"><img src="<?php echo base_url('assets/gambar/str/1.jpg" alt="#" width="500')?>" ></div>
   <p align="center">
-    Selamat datang di artikel pertama saya. Kali ini saya akan memperkenalkan siapa saya sebenarnya. Berikut profil saya :
-    <ul class="style12">
-      <li>Nama Lengkap : <?php echo $nama;?></li>
-      <li>Nama panggilan : <?php echo $panggilan;?></li>
-      <li>IGN: <?php echo $ign;?></li>
-      <li>TTL : <?php echo $ttl;?></li>
-      <li>Umur : <?php echo $umur;?></li>
-      <li>Anak ke : <?php echo $anak;?></li>
-      <li>Saudara : <?php echo $saudara;?></li>
-      <li>Alamat : <?php echo $alamat;?></li>
-      <li>Hobi : <?php echo $hobi;?></li>
-      <li>Jenjang pendidikan : <?php echo $pendidikan;?></li>
-    </ul>
+    <?php echo $u->konten ?>
 </p>
 </div>
 </div>
@@ -195,6 +188,7 @@ div.transbox p {
   <div align="center" class="style7">
     <p>Game Favorit</p>
     </div>
+    <p align="center"> 1 April 2018 / by : M. Satria R. P.</p>
   <p align="center">
     Selamat datang di artikel Kedua saya. Kalian tahu kan bahwa saya mempunyai 2 hobi ? iya saya hobi membaca dan juga bermain game, entah game offline maupun offline, mau di console atau pc semua saya suka. Pada kesempatan ini saya akan memberitahukan game apa saja yang menjadi favorit saya, tentu saja banyak sekali tetapi saya akan memberitahukan 2 game yang paling saya favoritkan dan ini lah game nya :</p>
     <div align="center" class="style7">
@@ -229,6 +223,7 @@ div.transbox p {
   <div align="center" class="style7">
     <p>Website Favorit</p>
     </div>
+    <p align="center"> 1 April 2018 / by : M. Satria R. P.</p>
   <p align="center">
     Selamat datang di artikel Ketiga saya. Pada artikel ketiga ini saya akan memberi tahu apa sih website favorit saya. Saya suka web-web tersebut karena konten di dalam nya sangat menarik dan juga bermanfaat. Ada 2 website yang paling saya sering kunjungi dan inilah website-website tersebut :</p>
     <div align="center" class="style7">
@@ -251,11 +246,17 @@ div.transbox p {
         <br><br>
         Di web ini juga akan membuat anda insya allah mendapatkan pahala karena menghibur orang dan memberi manfaat, tentu saja jika konten tersebut isi nya baik. 1cak ini pula dapat membantu anda berkreasi karena dalam membuat meme butuh pemikiran yang fresh.
       </p>
+    </div>
 </div>
 </div>
 </div>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div id="footer" align="center">
     <span class="success style17">&copy; STR_WEB 2018. CodeIgniter. All rights reserved. 		</span><br />
@@ -292,5 +293,7 @@ $(document).ready(function(){
 <script src="<?php echo base_url('assets/js/wow.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/counter.js')?>"></script>
 <script src="<?php echo base_url('assets/js/custom.js')?>"></script>
+
+<?php } ?>
 </body>
 </html>
