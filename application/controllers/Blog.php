@@ -36,6 +36,10 @@ class Blog extends CI_Controller {
 		$data['blog'] = $this->blog_data->get_data()->result();
 		$this->load->view('Blog', $data);
 	}
+	public function view(){
+		$data['blog'] = $this->blog_data->get_data_by_id($id);
+		$this->load->view('Blog', $data);
+	}
 
 	public function create(){
 		$this->load->view('form');
@@ -74,6 +78,39 @@ class Blog extends CI_Controller {
 	}
 	}
 
+	function edit($id){
+	$where = array('id' => $id);
+	$data['blog'] = $this->blog_data->edit_data($where,'blog')->result();
+	$this->load->view('edit',$data);
+}
+
+function update(){
+	$id = $this->input->post('id');
+	$judul = $this->input->post('judul');
+	$tanggal = $this->input->post('tanggal');
+	$author = $this->input->post('author');
+	$konten = $this->input->post('konten');
+
+	$data = array(
+		'judul' => $judul,
+		'tanggal' => $tanggal,
+		'author' => $author,
+		'konten' => $konten
+	);
+
+	$where = array(
+		'id' => $id
+	);
+
+	$this->blog_data->update_data($where,$data,'blog');
+	redirect('Blog/index');
+}
+
+function hapus($id){
+		$where = array('id' => $id);
+		$this->blog_data->hapus_data($where,'blog');
+		redirect('Blog/index');
+	}
 
 }
 ?>

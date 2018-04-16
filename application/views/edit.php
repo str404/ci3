@@ -47,7 +47,7 @@ div.transbox p {
   .style6 {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif ;
   font-size: 16px;}
   .style7 {
-	font-size: xx-large;
+	font-size: large;
 	font-weight: bold;
 	color: #000000;
 }
@@ -87,14 +87,12 @@ div.transbox p {
     <div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
+          <li><img src="<?php echo base_url('assets/gambar/str/1.jpg"  alt="#" width="70" height"50"')?>" ></li>
           <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
       <ul class="dropdown-menu">
             <li><a href="<?php echo site_url('Blog/create')?>">Create</a></li>
-            <li><a href="<?php echo site_url('Blog/bio')?>">Beranda</a></li>
-            <li><a href="#section4">Biodata</a></li>
-            <li><a href="#section5">Game Favorit</a></li>
-            <li><a href="#section1">Web Favorit</a></li>
+            <li><a href="<?php echo site_url('Blog/Bio')?>">Beranda</a></li>
           </ul>
         </li>
         </ul>
@@ -167,93 +165,52 @@ div.transbox p {
   </div>
   </div>
 
-<div id="section4" class="container-fluid">
+<div class="container-fluid">
 <div class="transbox">
   <div align="center" class="style7">
-    <?php 
-    foreach($blog as $u){ 
-    ?>
-    <p><?php echo $u->judul ?></p>
-    </div>
-    <p align="center"> <?php echo $u->tanggal ?> / by : <?php echo $u->author ?></p>
-    <div align="center"><img src="<?php echo base_url().'assets/gambar/str/'.$u->gambar ?>" alt="#" width="500')?>" ></div>
-  <p>
-    <?php echo $u->konten ?>
-</p>
-<p align="center"><?php echo anchor('Blog/edit/'.$u->id,'Edit'); ?>&ensp;&ensp;&ensp;<?php echo anchor('Blog/hapus/'.$u->id,'Hapus'); ?>  </p>
-<?php } ?>
-</div>
-</div>
-
-
-<div id="section5" class="container-fluid">
-<div class="transbox">
-  <div align="center" class="style7">
-    <p>Game Favorit</p>
-    </div>
-    <p align="center"> 1 April 2018 / by : M. Satria R. P.</p>
   <p align="center">
-    Selamat datang di artikel Kedua saya. Kalian tahu kan bahwa saya mempunyai 2 hobi ? iya saya hobi membaca dan juga bermain game, entah game offline maupun offline, mau di console atau pc semua saya suka. Pada kesempatan ini saya akan memberitahukan game apa saja yang menjadi favorit saya, tentu saja banyak sekali tetapi saya akan memberitahukan 2 game yang paling saya favoritkan dan ini lah game nya :</p>
-    <div align="center" class="style7">
-    <p>1. Life Is Strange</p>
-    </div>
-    <br>
-    <div align="center"><img src="<?php echo base_url('assets/gambar/str/lis.jpg" alt="#" width="500')?>" >
-       <p align="center">
-        Nah ini dia game favorit ane nomer 1, judulnya adalah Life is Strange. Bercerita tentang Max Caufield, remaja wanita yang belajar di salah satu universitas di kota kelahirannya, tiba-tiba diberi kekuatan untuk dapat memundurkan waktu, kekuatan ini dipakai max untuk membantu teman-temannya, tapi apa kalian tahu tentang butterfly effect ? yah semua yang anda pilih/lakukan pasti mempunyai akibat dan itu berdampak bagi sekitarnya. 
-        <br><br>
-        Ini adalah suatu game yang menurut saya mempunyai story yang sangat masterpiece sekali, anda diberi pilihan yang akan menimbulkan akibat kedepannya. Apapun pilihan anda akan mempunyai dampak pada jalan ceritanya, tentu ini akan menguji sisi kemanusiaan anda, CHOICE WISELY !
+    <center>
+		<h1>Silahkan menambah artikel baru</h1>
+		<h3>Tambah artikel baru</h3>
+	</center>
+	<?php foreach($blog as $u){ ?>
+	<form action="<?php echo base_url(). 'Blog/update'; ?>" method="post" enctype ="multipart/form-data">
+		<table style="margin:20px auto;">
+			<tr>
+				<td>Judul :</td><br>
+				<td><input type="hidden" name="id" value="<?php echo $u->id ?>">
+					<input type="text" name="judul" value="<?php echo $u->judul ?>">
+				</td>
+			</tr>
+			<tr>
+				<td>Tanggal : </td>
+				<td><input type="text" name="tanggal" value="<?php echo $u->tanggal ?>"></td>
+			</tr>
+			<tr>
+				<td>Author :</td>
+				<td><input type="text" name="author" value="<?php echo $u->author ?>"></td>
+			</tr>
+			<tr>
+				<td>Konten :</td>
+				<td><textarea type="text" name="konten" style="height: 400px"> value="<?php echo $u->konten ?>"></textarea></td>
+			</tr>
+			<tr>
+				<td>Gambar :</td>
+				<td><input type="file" name="userfile" size="20" /></td>
+
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Simpan"></td>
+			</tr>
+		</table>
+	</form>	
 </p>
 </div>
-
-    <div align="center" class="style7">
-    <p>2. Mobile Legend Bang Bang</p>
-    </div>
-    <br>
-    <div align="center"><img src="<?php echo base_url('assets/gambar/str/4.jpg" alt="#" width="500')?>" >
-      <br><br>
-      <div align="center"><img src="<?php echo base_url('assets/gambar/str/5.jpg" alt="#" width="500')?>" >
-       <p align="center">
-        Lanjut ke game favorit kedua ane, game sejuta umat, dari anak kecil hingga orang dewasa memainkannya, MOBA KOK ANALOG ? hahaha iya betul sekali, Mobile Legend Bang-Bang . Jaman sekarang game itu lagi hits banget, coba deh samperin warung-warung kopi mesti ada deh yang main game ini.
-        <br><br>
-        Menurut saya ini game punya aura yang berbeda, punya daya tarik sendiri sehingga orang-orang ingin mencoba nya. Banyak sekali pilihan hero yang bisa dimainkan, banyak juga skin/kostum untuk hero-hero tersebut sehingga menanambah daya tarik game ini. Untuk membuat item pun cukup mudah jika sudah terbiasa, penggunaan hero pun juga tergantung individu, tidak ada hero yang jelek, semua bagus jika anda dapat memainkannya. </p>
-</div>
 </div>
 </div>
 
-<div id="section1" class="container-fluid">
-<div class="transbox">
-  <div align="center" class="style7">
-    <p>Website Favorit</p>
-    </div>
-    <p align="center"> 1 April 2018 / by : M. Satria R. P.</p>
-  <p align="center">
-    Selamat datang di artikel Ketiga saya. Pada artikel ketiga ini saya akan memberi tahu apa sih website favorit saya. Saya suka web-web tersebut karena konten di dalam nya sangat menarik dan juga bermanfaat. Ada 2 website yang paling saya sering kunjungi dan inilah website-website tersebut :</p>
-    <div align="center" class="style7">
-    <p>1. Kaskus</p>
-    </div>
-    <br>
-    <div align="center"><img src="<?php echo base_url('assets/gambar/str/kaskus.png" alt="#" width="500')?>" >
-       <p align="center">
-        Website sejuta umat ini dari dulu selalu menjadi favorit. Dari jargon nya aja "The largest Community" . Segala kalangan dan umur berkunjung ke website ini. Ada yang tahu kenapa ? yes betul sekali. Banyak sekali konten-konten menarik di dalam nya, beragam sekali forum-forum didalam nya. Karena di kaskus ini yang membuat konten adalah ya user itu sendiri. Bayangkan aja semua orang pasti memiliki sesuatu yang menarik untuk dibahas setiap harinya dan itu mereka jadikan konten di kaskus ini. Wow berapa konten dalam sehari tuh ?
-</p>
-</div>
-
-    <div align="center" class="style7">
-    <p>2. 1Cak</p>
-    </div>
-    <br>
-    <div align="center"><img src="<?php echo base_url('assets/gambar/str/1cak.png" alt="#" width="500')?>" >
-       <p align="center">
-        Kita masuk ke website paling funny di indonesia. Website ini mempunyai konten meme dan rage yang dibuat oleh usernya, seperti 9gag kalo di luar negeri. Website ini bisa membuat harimu bahagia, mungkin waktu bingung tugas, mungkin cari ide, atau waktu galau ? coba deh kunjungi web satu ini. Boom hari anda akan cerah kembali.
-        <br><br>
-        Di web ini juga akan membuat anda insya allah mendapatkan pahala karena menghibur orang dan memberi manfaat, tentu saja jika konten tersebut isi nya baik. 1cak ini pula dapat membantu anda berkreasi karena dalam membuat meme butuh pemikiran yang fresh.
-      </p>
-    </div>
-</div>
-</div>
-</div>
-
+<br>
 <br>
 <br>
 <br>
@@ -296,7 +253,6 @@ $(document).ready(function(){
 <script src="<?php echo base_url('assets/js/wow.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/counter.js')?>"></script>
 <script src="<?php echo base_url('assets/js/custom.js')?>"></script>
-
-
+<?php } ?>
 </body>
 </html>
