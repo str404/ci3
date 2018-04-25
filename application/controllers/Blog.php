@@ -46,7 +46,16 @@ class Blog extends CI_Controller {
 	}
 
 	public function create_action(){
-		
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('judul','Judul','required');
+		$this->form_validation->set_rules('tanggal','Tanggal','required');
+		$this->form_validation->set_rules('author','Author','required');
+		$this->form_validation->set_rules('konten','Konten','required');
+
+		if ($this->form_validation->run()==false) {
+			$this->load->view('form');
+		}else{
 		$config['upload_path']          = 'assets/gambar/upload';
         $config['allowed_types']        = 'gif|jpg|png';
         $this->load->library('upload', $config);
@@ -75,6 +84,7 @@ class Blog extends CI_Controller {
 			);
 		$this->blog_data->input_data($data,'blog');
 		redirect('Blog/index');
+		}
 	}
 	}
 

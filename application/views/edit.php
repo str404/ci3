@@ -192,7 +192,7 @@ div.transbox p {
 			</tr>
 			<tr>
 				<td>Konten :</td>
-				<td><textarea type="text" name="konten" style="height: 400px"> value="<?php echo $u->konten ?>"></textarea></td>
+				<td><input type="text" name="konten" style="width : 500px; height: 200px;" value="<?php echo $u->konten ?>"></td>
 			</tr>
 			<tr>
 				<td>Gambar :</td>

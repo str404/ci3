@@ -90,7 +90,7 @@ div.transbox p {
           <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
       <ul class="dropdown-menu">
-            <li><a href="<?php echo site_url('Blog/create')?>">Create</a></li>
+            <li><a href="<?php echo site_url('Blog/create_action')?>">Create</a></li>
             <li><a href="<?php echo site_url('Blog/bio')?>">Beranda</a></li>
             <li><a href="#section4">Biodata</a></li>
             <li><a href="#section5">Game Favorit</a></li>

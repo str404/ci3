@@ -10,6 +10,7 @@
    	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/owl.theme.css')?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/owl.carousel.css')?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/style.css')?>">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/custom.css">
  <script src="<?php echo base_url('assets/js/jquery.min.js')?>"></script>
   <style>
   body {
@@ -66,7 +67,7 @@ div.transbox p {
 	color:#fff;
 	
 	position:absolute;
-    bottom:0px;
+    bottom:-100px;
  
     width:100%;
 }
@@ -91,7 +92,7 @@ div.transbox p {
           <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
       <ul class="dropdown-menu">
-            <li><a href="<?php echo site_url('Blog/create')?>">Create</a></li>
+            <li><a href="<?php echo site_url('Blog/create_action')?>">Create</a></li>
             <li><a href="<?php echo site_url('Blog/Bio')?>">Beranda</a></li>
           </ul>
         </li>
@@ -173,25 +174,27 @@ div.transbox p {
 		<h1>Silahkan menambah artikel baru</h1>
 		<h3>Tambah artikel baru</h3>
 	</center>
-	<form action="<?php echo base_url(). 'Blog/create_action'; ?>" method="post" enctype ="multipart/form-data">
-		<table style="margin:20px auto;">
-			<tr>
-				<td>Judul :</td><br>
-				<td><input type="text" name="judul"></td>
+  <?php echo form_open_multipart('Blog/create_action',  array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+	<?php echo validation_errors()?>	
+    <table style="margin:20px auto;">
+			<tr style="height: 50px;">
+				<td width="100px">Judul :</td><br>
+				<td><input type="text" name="judul" value="<?php echo set_value('judul') ?>">
+          <div class="invalid-feedback">Isi judul dulu gan</div></td>
 			</tr>
-			<tr>
+			<tr style="height: 50px;">
 				<td>Tanggal : </td>
-				<td><input type="text" name="tanggal"></td>
+				<td><input type="text" name="tanggal" value="<?php echo set_value('tanggal') ?>"></td>
 			</tr>
-			<tr>
+			<tr style="height: 50px;">
 				<td>Author :</td>
-				<td><input type="text" name="author"></td>
+				<td><input type="text" name="author" value="<?php echo set_value('author') ?>"></td>
 			</tr>
-			<tr>
+			<tr style="height: 50px;">
 				<td>Konten :</td>
-				<td><textarea cols="100" rows="10" name="konten" class="form-control" ></textarea></td>
+				<td><textarea cols="100" rows="10" name="konten" class="form-control" ><?php set_value('konten') ?></textarea></td>
 			</tr>
-			<tr>
+			<tr style="height: 50px;">
 				<td>Gambar :</td>
 				<td><input type="file" name="userfile" size="20" /></td>
 
@@ -201,7 +204,7 @@ div.transbox p {
 				<td><input type="submit" value="tambah"></td>
 			</tr>
 		</table>
-	</form>	
+    <?php form_close() ?>
 </p>
 </div>
 </div>
@@ -217,7 +220,7 @@ div.transbox p {
 
 <div id="footer" align="center">
     <span class="success style17">&copy; STR_WEB 2018. CodeIgniter. All rights reserved. 		</span><br />
-    Copyright &copy; 2017
+    Copyright &copy; 2018
 Designed by Muhammad Satria R P</div>
 </div>
 
@@ -241,7 +244,7 @@ $(document).ready(function(){
 	
 
 <script src="<?php echo base_url('assets/js/jquery.js')?>"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js')?>"></script>
+<!-- <script src="<?php //echo base_url('assets/js/bootstrap.min.js')?>"></script> -->
 <script src="<?php echo base_url('assets/js/smoothscroll.js')?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.nav.js')?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.parallax.js')?>"></script>
@@ -249,7 +252,14 @@ $(document).ready(function(){
 <script src="<?php echo base_url('assets/js/isotope.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/wow.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/counter.js')?>"></script>
-<script src="<?php echo base_url('assets/js/custom.js')?>"></script>
+<!-- <script src="<?php //echo base_url('assets/js/custom.js')?>"></script> -->
+<script src="<?php echo base_url() ?>assets/js/jquery-1.9.1.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
 
+    <!-- Plugins -->
+    <script src="<?php echo base_url() ?>assets/js/holder.min.js"></script>
+
+    <!-- Custom -->
+    <script src="<?php echo base_url() ?>assets/js/custom.js"></script>
 </body>
 </html>
