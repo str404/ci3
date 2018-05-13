@@ -176,43 +176,26 @@ div.transbox p {
   <div align="center" class="style7">
   <p align="center">
     <center>
-		<h1>Silahkan menambah artikel baru</h1>
-		<h3>Tambah artikel baru</h3>
+		<h1>Silahkan edit artikel </h1>
+		<h3>Edit artikel </h3>
 	</center>
-	<?php foreach($blog as $u){ ?>
-	<form action="<?php echo base_url(). 'Blog/update'; ?>" method="post" enctype ="multipart/form-data">
+	<?php foreach($data as $i){ ?>
+	<form action="<?php echo base_url(). 'Category/update'; ?>" method="post" enctype ="multipart/form-data">
 		<table style="margin:20px auto;">
 			<tr>
-				<td>Judul :</td><br>
-				<td><input type="hidden" name="id" value="<?php echo $u->id ?>">
-					<input type="text" name="judul" value="<?php echo $u->judul ?>">
+				<td>Nama :</td><br>
+				<td><input type="hidden" name="id_kategori" value="<?php echo $i->id_kategori ?>">
+					<input type="text" name="nama" value="<?php echo $i->nama ?>">
 				</td>
 			</tr>
-      <tr>
-        <td width="100px">Kategori :</td><br>
-        <td><?php echo form_dropdown('kategori', $dropdown, set_value('kategori'), 'class="form-control" required'); ?>
-        </td>
-      </tr>
 			<tr>
-				<td>Tanggal : </td>
-				<td><input type="text" name="tanggal" value="<?php echo $u->tanggal ?>"></td>
+				<td>Deskripsi : </td>
+				<td><input type="text" name="deskripsi" style="width : 500px; height: 200px;" value="<?php echo $i->deskripsi ?>"></td>
 			</tr>
-			<tr>
-				<td>Author :</td>
-				<td><input type="text" name="author" value="<?php echo $u->author ?>"></td>
-			</tr>
-			<tr>
-				<td>Konten :</td>
-				<td><input type="text" name="konten" style="width : 500px; height: 200px;" value="<?php echo $u->konten ?>"></td>
-			</tr>
-			<tr>
-				<td>Gambar :</td>
-				<td><input type="file" name="userfile" size="20" /></td>
-
-			</tr>
+		
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Simpan"></td>
+				<td><button id="submitBtn" type="submit" class="btn btn-primary">Simpan</button></td>
 			</tr>
 		</table>
 	</form>	

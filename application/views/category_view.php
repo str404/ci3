@@ -5,11 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
   <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css')?>">
-  <link rel="stylesheet" href="<?php echo base_url('assets/css/css/animate.min.css')?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/font-awesome.min.css')?>">
-   	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/owl.theme.css')?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/owl.carousel.css')?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/style.css')?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/animate.min.css')?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css')?>">
+   	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.theme.css')?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/owl.carousel.css')?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>">
+    <link href="<?php echo base_url().'assets/css/jquery.dataTables.min.css'?>" rel="stylesheet">
+
  <script src="<?php echo base_url('assets/js/jquery.min.js')?>"></script>
   <style>
   body {
@@ -47,7 +49,7 @@ div.transbox p {
   .style6 {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif ;
   font-size: 16px;}
   .style7 {
-	font-size: large;
+	font-size: xx-large;
 	font-weight: bold;
 	color: #000000;
 }
@@ -87,12 +89,14 @@ div.transbox p {
     <div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><img src="<?php echo base_url('assets/gambar/str/1.jpg"  alt="#" width="70" height"50"')?>" ></li>
           <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
       <ul class="dropdown-menu">
-            <li><a href="<?php echo site_url('Blog/create')?>">Create</a></li>
-            <li><a href="<?php echo site_url('Blog/Bio')?>">Beranda</a></li>
+            <li><a href="<?php echo site_url('Blog/create_action')?>">Create</a></li>
+            <li><a href="<?php echo site_url('Blog/bio')?>">Beranda</a></li>
+            <li><a href="#section4">Biodata</a></li>
+            <li><a href="#section5">Game Favorit</a></li>
+            <li><a href="#section1">Web Favorit</a></li>
           </ul>
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Kategori <span class="caret"></span></a>
@@ -171,57 +175,119 @@ div.transbox p {
   </div>
   </div>
 
+
 <div class="container-fluid">
 <div class="transbox">
   <div align="center" class="style7">
-  <p align="center">
-    <center>
-		<h1>Silahkan menambah artikel baru</h1>
-		<h3>Tambah artikel baru</h3>
-	</center>
-	<?php foreach($blog as $u){ ?>
-	<form action="<?php echo base_url(). 'Blog/update'; ?>" method="post" enctype ="multipart/form-data">
-		<table style="margin:20px auto;">
-			<tr>
-				<td>Judul :</td><br>
-				<td><input type="hidden" name="id" value="<?php echo $u->id ?>">
-					<input type="text" name="judul" value="<?php echo $u->judul ?>">
-				</td>
-			</tr>
-      <tr>
-        <td width="100px">Kategori :</td><br>
-        <td><?php echo form_dropdown('kategori', $dropdown, set_value('kategori'), 'class="form-control" required'); ?>
-        </td>
-      </tr>
-			<tr>
-				<td>Tanggal : </td>
-				<td><input type="text" name="tanggal" value="<?php echo $u->tanggal ?>"></td>
-			</tr>
-			<tr>
-				<td>Author :</td>
-				<td><input type="text" name="author" value="<?php echo $u->author ?>"></td>
-			</tr>
-			<tr>
-				<td>Konten :</td>
-				<td><input type="text" name="konten" style="width : 500px; height: 200px;" value="<?php echo $u->konten ?>"></td>
-			</tr>
-			<tr>
-				<td>Gambar :</td>
-				<td><input type="file" name="userfile" size="20" /></td>
+    <p>List kategori</p>
+    </div>
+<!-- 
+    <div class="container">
 
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Simpan"></td>
-			</tr>
-		</table>
-	</form>	
-</p>
+      <table class="table table-bordered table-striped" id="mydata">
+
+            <thead>
+
+                  <tr>
+
+                        <td>Id</td>
+
+                        <td>Nama Kategori</td>
+
+                        <td>Deskripsi</td>
+
+                        <td>date_created</td>
+
+                        <td>action</td>
+
+
+                  </tr>
+
+            </thead>
+
+            <tbody>
+
+                  <?php
+
+                        foreach($data->result_array() as $i):
+
+                              $id=$i['id'];
+
+                              $nama=$i['nama'];
+
+                              $deskripsi=$i['deskripsi'];
+
+                              $date_created=$i['date_created'];
+
+                  ?>
+
+                  <tr>
+
+                        <td><?php echo $id;?> </td>
+
+                        <td><?php echo $nama;?> </td>
+
+                        <td><?php echo $deskripsi;?> </td>
+
+                        <td><?php echo $date_created;?> </td>
+                        <td></td>
+
+                  </tr>
+
+                  <?php endforeach;?>
+
+            </tbody>
+
+      </table>
+
+</div> -->
+<div class="container">
+<table class="table table-bordered table-striped" id="mydata">
+ <?php foreach($data->result() as $i){ ?>
+<div class="col-md-4">
+  <div class="thumbnail">
+    <div class="caption">
+      <h4 class=""> <?php echo $i->nama ?></h4>
+      <hr>
+      <p class=""> <?php echo $i->deskripsi ?> </p>
+      <a href="<?php echo site_url ('Category/hapus/'.$i->id_kategori); ?>" class="btn btn-danger btn-xs pull-right" role="button">Delete </i></a>
+      <a href=" <?php echo site_url('Category/edit/'.$i->id_kategori); ?>" class="btn btn-primary btn-xs" role="button">Edit </i></a>
+    </div>
+  </div>
 </div>
+<?php } ?>
+</table>
+</div>
+
+<!-- <?php
+        // $links ini berasal dari fungsi pagination
+        // Jika $links ada (data melebihi jumlah max per page), maka tampilkan
+        if (isset($links)) {
+            echo $links;
+        }
+        ?>
+
+<div align="center">
+<nav aria-label="Page navigation example">
+ <ul class="pagination justify-content-center">
+   <li class="page-item disabled">
+     <a class="page-link" href="#" tabindex="-1">Previous</a>
+   </li>
+   <li class="page-item"><a class="page-link" href="#">1</a></li>
+   <li class="page-item"><a class="page-link" href="#">2</a></li>
+   <li class="page-item"><a class="page-link" href="#">3</a></li>
+   <li class="page-item">
+     <a class="page-link" href="#">Next</a>
+   </li>
+ </ul>
+</nav>
+</div> -->
+
 </div>
 </div>
 
-<br>
+
+
 <br>
 <br>
 <br>
@@ -264,6 +330,18 @@ $(document).ready(function(){
 <script src="<?php echo base_url('assets/js/wow.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/counter.js')?>"></script>
 <script src="<?php echo base_url('assets/js/custom.js')?>"></script>
-<?php } ?>
+<script src="<?php echo base_url().'assets/js/jquery.dataTables.min.js'?>"> </script>
+
+<script>
+
+      $(document).ready(function(){
+
+            $('#mydata').DataTable();
+
+      });
+
+</script>
+
+
 </body>
 </html>

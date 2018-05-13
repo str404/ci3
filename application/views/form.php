@@ -96,6 +96,12 @@ div.transbox p {
             <li><a href="<?php echo site_url('Blog/Bio')?>">Beranda</a></li>
           </ul>
         </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Kategori <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+            <li><a href="<?php echo site_url('Category/create')?>">Buat kategori</a></li>
+            <li><a href="<?php echo site_url('Category')?>">list kategori</a></li>
+          </ul>
+        </li>
         </ul>
       </div>
     </div>
@@ -182,6 +188,11 @@ div.transbox p {
 				<td><input type="text" name="judul" value="<?php echo set_value('judul') ?>">
           <div class="invalid-feedback">Isi judul dulu gan</div></td>
 			</tr>
+      <tr>
+        <td width="100px">Kategori :</td><br>
+        <td><?php echo form_dropdown('kategori', $dropdown, set_value('kategori'), 'class="form-control" required'); ?>
+        </td>
+      </tr>
 			<tr style="height: 50px;">
 				<td>Tanggal : </td>
 				<td><input type="text" name="tanggal" value="<?php echo set_value('tanggal') ?>"></td>
@@ -201,7 +212,7 @@ div.transbox p {
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="tambah"></td>
+				<td><input class="btn btn-primary" type="submit" value="tambah"></td>
 			</tr>
 		</table>
     <?php form_close() ?>

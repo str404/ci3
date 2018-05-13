@@ -97,6 +97,12 @@ div.transbox p {
             <li><a href="#section1">Web Favorit</a></li>
           </ul>
         </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Kategori <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+            <li><a href="<?php echo site_url('Category/create')?>">Buat kategori</a></li>
+            <li><a href="<?php echo site_url('Category')?>">list kategori</a></li>
+          </ul>
+        </li>
         </ul>
       </div>
     </div>
