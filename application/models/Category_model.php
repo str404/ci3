@@ -7,14 +7,17 @@
    {
        $data = array(
            'nama'          => $this->input->post('nama')
-           // 'deskripsi'   => $this->input->post('deskripsi')
+            // 'deskripsi'   => $this->input->post('deskripsi')
        );
 
        return $this->db->insert('categories', $data);
    }
 
-      public function get_all_categories()
-   {
+      public function get_all_categories($limit = FALSE, $offset = FALSE)
+   {  
+       if ( $limit ) {
+           $this->db->limit($limit, $offset);
+       }
        // Urutkan berdasar abjad
        $this->db->order_by('nama');
 
@@ -70,10 +73,10 @@
   //          $this->db->limit($limit, $offset);
   //      }
   //      // Urutkan berdasar tanggal
-  //      $this->db->order_by('categories.date_created', 'DESC');
+  //      // $this->db->order_by('categories.date_created', 'DESC');
 
   //      // Inner Join dengan table Categories
-  //       $this->db->join('categories', 'categories.cat_id = blogs.fk_cat_id');
+  //       // $this->db->join('categories', 'categories.id_kategori = blogs.fk_cat_id');
       
   //      $query = $this->db->get('categories');
 
@@ -81,11 +84,11 @@
   //      return $query->result();
   //  }
 
-   // public function get_total()
-   // {
-   //     // Dapatkan jumlah total artikel
-   //     return $this->db->count_all("categories");
-   // }
+   public function get_total()
+   {
+       // Dapatkan jumlah total artikel
+       return $this->db->count_all("categories");
+   }
 
 
 

@@ -175,14 +175,12 @@ div.transbox p {
   </div>
   </div>
 
-
 <div class="container-fluid">
 <div class="transbox">
   <div align="center" class="style7">
     <p>List kategori</p>
     </div>
-<!-- 
-    <div class="container">
+<div class="container">
 
       <table class="table table-bordered table-striped" id="mydata">
 
@@ -192,7 +190,7 @@ div.transbox p {
 
                         <td>Id</td>
 
-                        <td>Nama Kategori</td>
+                        <td>Nama Category</td>
 
                         <td>Deskripsi</td>
 
@@ -209,9 +207,9 @@ div.transbox p {
 
                   <?php
 
-                        foreach($data->result_array() as $i):
+                        foreach($x->result_array() as $i):
 
-                              $id=$i['id'];
+                              $id_kategori=$i['id_kategori'];
 
                               $nama=$i['nama'];
 
@@ -223,14 +221,16 @@ div.transbox p {
 
                   <tr>
 
-                        <td><?php echo $id;?> </td>
+                        <td><?php echo $id_kategori;?> </td>
 
                         <td><?php echo $nama;?> </td>
 
                         <td><?php echo $deskripsi;?> </td>
 
                         <td><?php echo $date_created;?> </td>
-                        <td></td>
+
+                        <td><a href="<?php echo site_url ('Category/hapus/'.$id_kategori); ?>" class="btn btn-danger btn-xs pull-right" role="button">Delete </i></a>
+      <a href=" <?php echo site_url('Category/edit/'.$id_kategori); ?>" class="btn btn-primary btn-xs" role="button">Edit </i></a></td>
 
                   </tr>
 
@@ -240,10 +240,16 @@ div.transbox p {
 
       </table>
 
-</div> -->
+</div>
+
+<div class="container-fluid">
+<div class="transbox">
+  <div align="center" class="style7">
+    <p>List kategori</p>
+    </div>
 <div class="container">
 <table class="table table-bordered table-striped" id="mydata">
- <?php foreach($data->result() as $i){ ?>
+<?php foreach($all_categories as $i){ ?>
 <div class="col-md-4">
   <div class="thumbnail">
     <div class="caption">
@@ -255,19 +261,20 @@ div.transbox p {
     </div>
   </div>
 </div>
-<?php } ?>
+<?php } 
+?>
 </table>
 </div>
 
-<!-- <?php
+<div align="center">
+<?php
         // $links ini berasal dari fungsi pagination
         // Jika $links ada (data melebihi jumlah max per page), maka tampilkan
-        if (isset($links)) {
             echo $links;
-        }
         ?>
+</div>
 
-<div align="center">
+<!-- <div align="center">
 <nav aria-label="Page navigation example">
  <ul class="pagination justify-content-center">
    <li class="page-item disabled">
@@ -281,7 +288,7 @@ div.transbox p {
    </li>
  </ul>
 </nav>
-</div> -->
+</div>  -->
 
 </div>
 </div>

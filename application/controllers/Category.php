@@ -3,8 +3,9 @@
     class Category extends CI_Controller {
         function __construct(){
         parent::__construct();      
-        $this->load->helper('url','form');
-         $this->load->model('Category_model');
+        $this->load->helper(array('url','form'));
+        $this->load->model('Category_model');
+        $this->load->library('pagination');
     }
 
    //  public function index()
@@ -59,43 +60,39 @@
     }
 
      public function index(){
-
-            $this->load->model('Category_model');
-
-            $x['data']=$this->Category_model->show_barang();
-
-            $this->load->view('category_view',$x);
-
-
-
-        // $data['page_title'] = 'List Artikel';
+        $this->load->model('Category_model');
+        $data['page_title'] = 'List Artikel';
         
-    //     // Dapatkan data dari model Blog dengan pagination
-    //     // Jumlah artikel per halaman
-    //     $limit_per_page = 6; 
-    //     // URI segment untuk mendeteksi "halaman ke berapa" dari URL
-    //     $start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
+        // Dapatkan data dari model Blog dengan pagination
+        // Jumlah artikel per halaman
+        $limit_per_page = 2; 
+        // URI segment untuk mendeteksi "halaman ke berapa" dari URL
+        $start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
 
-    //     // Dapatkan jumlah data
-    //     $total_records = $this->Category_model->get_total();
+        // Dapatkan jumlah data
+        $total_records = $this->Category_model->get_total();
 
-    //     if ($total_records > 0) {
-    // // Dapatkan data pada halaman yg dituju
-    // $data["all_categories"] = $this->Category_model->get_all_categories($limit_per_page, 
-    // $start_index);
-    
-    // // Konfigurasi pagination
-    // $config['base_url'] = base_url() . 'Category/index';
-    // $config['total_rows'] = $total_records;
-    // $config['per_page'] = $limit_per_page;
-    // $config["uri_segment"] = 3;
-    
-    // $this->pagination->initialize($config);
+        if ($total_records > 0) {
+        // Dapatkan data pada halaman yg dituju
+        $data['all_categories'] = $this->Category_model->get_all_categories($limit_per_page, 
+        $start_index);
         
-    // // Buat link pagination
-    // $data["links"] = $this->pagination->create_links();
-
-      //   }
+        // Konfigurasi pagination
+        $config['base_url'] = base_url() . 'category/index';
+        $config['total_rows'] = $total_records;
+        $config['per_page'] = $limit_per_page;
+        
+        $this->pagination->initialize($config);
+            
+        // Buat link pagination
+        $data["links"] = $this->pagination->create_links();
+        // print_r($data['all_categories']);
+        // echo $total_records;
+        // echo $data['links'];
+        // echo $start_index;
+        $data['x']=$this->Category_model->show_barang();
+        $this->load->view('category_view',$data);
+        }
        }
 
     function edit($id){
