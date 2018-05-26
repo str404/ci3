@@ -105,6 +105,7 @@ div.transbox p {
         </li>
           <li><a href="#section5">&ensp;&ensp;&ensp;&ensp;About</a></li>
         </ul>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="<?php echo site_url('User/logout')?>"><button type="button" class="btn btn-info btn3d3">Logout</button></a>
       </div>
     </div>
   </div>

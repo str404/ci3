@@ -89,21 +89,8 @@ div.transbox p {
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li><img src="<?php echo base_url('assets/gambar/str/1.jpg"  alt="#" width="70" height"50"')?>" ></li>
-          <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
-          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-            <li><a href="<?php echo site_url('Blog/create_action')?>">Create</a></li>
-            <li><a href="<?php echo site_url('Blog/Bio')?>">Beranda</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Kategori <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-            <li><a href="<?php echo site_url('Category/create')?>">Buat kategori</a></li>
-            <li><a href="<?php echo site_url('Category')?>">list kategori</a></li>
-          </ul>
-        </li>
+          <li><a href="<?php echo site_url('User/login')?>">&ensp;&ensp;&ensp;&ensp;Login</a></li>
         </ul>
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="<?php echo site_url('User/logout')?>"><button type="button" class="btn btn-info btn3d3">Logout</button></a>
       </div>
     </div>
   </div>
@@ -113,89 +100,60 @@ div.transbox p {
 <br />
 <br />
 
-<h1 align="center" class="style2"><span class="navbar-inverse "><span class="text-danger style9">Blog</span></h1>
+<h1 align="center" class="style2"><span class="navbar-inverse "><span class="text-danger style9">Pendaftaran Member</span></h1>
 
 <br />
 <br />
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
-  <li data-target="#myCarousel" data-slide-to="4"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox" align="center" >
-    <div class="item active ">
-      <img src="<?php echo base_url('assets/gambar/str/1.jpg"  alt="#" width="500')?>" >
-      <div class="carousel-caption">
-        <h3>Muhammad Satria R.P</h3>
-       
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="<?php echo base_url('assets/gambar/str/2.jpg"  alt="#" width="500')?>">
-      <div class="carousel-caption">
-        <h3>Muhammad Satria R.P</h3>
-        
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="<?php echo base_url('assets/gambar/str/3.jpg"  alt="#" width="500')?>">
-      <div class="carousel-caption">
-        <h3>Muhammad Satria R.P</h3>
-      
-      </div>
-    </div>
-
-      <div class="item">
-      <img src="<?php echo base_url('assets/gambar/str/lis.jpg"  alt="#" width="500')?>">
-      <div class="carousel-caption">
-        <h3>Muhammad Satria R.P</h3>
-
-      </div>
-    </div>
-
-  <div class="item">
-      <img src="<?php echo base_url('assets/gambar/str/5.jpg"  alt="#" width="500')?>">
-      <div class="carousel-caption">
-        <h3>Muhammad Satria R.P</h3>
-
-      </div>
-    </div>
-  
-  </div>
-  </div>
 
 <div class="container-fluid">
 <div class="transbox">
   <div align="center" class="style7">
   <p align="center">
     <center>
-		<h1>Silahkan menambah kategori baru</h1>
-		<h3>Tambah kategori baru</h3>
+		<h1>Silahkan menambah member baru</h1>
+		<h3>Tambah member baru</h3>
 	</center>
-  <?php echo form_open( 'Category/create', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+      <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+  <?php echo form_open('User/register', array('class' => 'needs-validation', 'novalidate' => '')); ?>
   <?php echo validation_errors()?>	
-<table style="margin:20px auto;">
-			<tr style="height: 50px;">
-				<td width="100px">Nama :</td><br>
-				<td><input type="text" name="nama" value="<?php echo set_value('nama') ?>">
-			</tr>
-			<tr style="height: 50px;">
-				<td>Deskripsi : </td>
-				<td><textarea cols="50" rows="10" name="deskripsi" class="form-control" ><?php set_value('konten') ?></textarea></td>
-			</tr>
-</table>
+
+   <div class="form-group">
+       <label>Nama Lengkap</label>
+       <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" value="<?php echo set_value('nama') ?>">
+   </div>
+
+	<div class="form-group">
+    <label>Kodepos</label>
+    <input type="text" class="form-control" name="kodepos" placeholder="Kodepos" value="<?php echo set_value('kodepos') ?>">
+   </div>
+
+   <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" name="email" placeholder="Email" value="<?php echo set_value('email') ?>">
+   </div>
+
+   <div class="form-group">
+    <label>Username</label>
+    <input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo set_value('username') ?>">
+   </div>
+
+   <div class="form-group">
+    <label>Password</label>
+    <input type="text" class="form-control" name="password" placeholder="Password">
+   </div>
+
+   <div class="form-group">
+    <label>Konfirmasi Password</label>
+    <input type="text" class="form-control" name="password2" placeholder="Konfirmasi Password">
+   </div>
+
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
-<button id="submitBtn" type="submit" class="btn btn-primary">Simpan</button>
+<button type="submit" class="btn btn-primary btn-block">Daftar</button>
     <?php form_close() ?>
+
+</div>
+</div>
 </p>
 </div>
 </div>
