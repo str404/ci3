@@ -10,7 +10,6 @@
    	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/owl.theme.css')?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/owl.carousel.css')?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/css/style.css')?>">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/custom.css">
  <script src="<?php echo base_url('assets/js/jquery.min.js')?>"></script>
   <style>
   body {
@@ -48,7 +47,7 @@ div.transbox p {
   .style6 {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif ;
   font-size: 16px;}
   .style7 {
-	font-size: large;
+	font-size: xx-large;
 	font-weight: bold;
 	color: #000000;
 }
@@ -67,7 +66,7 @@ div.transbox p {
 	color:#fff;
 	
 	position:absolute;
-    bottom:-100px;
+    bottom:0px;
  
     width:100%;
 }
@@ -77,102 +76,50 @@ div.transbox p {
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>      
-		  </button>
+      </button>
     <div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><img src="<?php echo base_url('assets/gambar/str/1.jpg"  alt="#" width="70" height"50"')?>" ></li>
-          <li><a href="<?php echo site_url('User/login')?>">&ensp;&ensp;&ensp;&ensp;Login</a></li>
+          <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+            <li><a href="<?php echo site_url('Blog/create_action')?>">Create</a></li>
+            <li><a href="<?php echo site_url('Blog/bio')?>">Beranda</a></li>
+            <li><a href="#section4">Biodata</a></li>
+            <li><a href="#section5">Game Favorit</a></li>
+            <li><a href="#section1">Web Favorit</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Kategori <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+            <li><a href="<?php echo site_url('Category/create')?>">Buat kategori</a></li>
+            <li><a href="<?php echo site_url('Category')?>">list kategori</a></li>
+          </ul>
+        </li>
         </ul>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="<?php echo site_url('User/logout')?>"><button type="button" class="btn btn-info btn3d3">Logout</button></a>
       </div>
     </div>
   </div>
 </nav>
 
-<br />
-<br />
-<br />
-
-<h1 align="center" class="style2"><span class="navbar-inverse "><span class="text-danger style9">Pendaftaran Member</span></h1>
-
-<br />
-<br />
-
-<div class="container-fluid">
+<div id="section4" class="container-fluid">
 <div class="transbox">
-  <div align="center" class="style7">
-  <p align="center">
-    <center>
-		<h1>Silahkan menambah member baru</h1>
-		<h3>Tambah member baru</h3>
-	</center>
-      <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-  <?php echo form_open('User/register', array('class' => 'needs-validation', 'novalidate' => '')); ?>
-  <?php echo validation_errors()?>	
-
-   <div class="form-group">
-       <label>Nama Lengkap</label>
-       <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" value="<?php echo set_value('nama') ?>">
+<div class="container">
+   <div class="py-5 text-center">
+       <div class="style7"><h2>Selamat datang <?php echo $user->nama ?></h2></div>
    </div>
-
-	<div class="form-group">
-    <label>Kodepos</label>
-    <input type="text" class="form-control" name="kodepos" placeholder="Kodepos" value="<?php echo set_value('kodepos') ?>">
-   </div>
-
-   <div class="form-group">
-    <label>Email</label>
-    <input type="text" class="form-control" name="email" placeholder="Email" value="<?php echo set_value('email') ?>">
-   </div>
-
-   <div class="form-group">
-    <label>Username</label>
-    <input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo set_value('username') ?>">
-   </div>
-
-   <div class="form-group">
-    <label>Password</label>
-    <input type="text" class="form-control" name="password" placeholder="Password">
-   </div>
-
-   <div class="form-group">
-    <label>Konfirmasi Password</label>
-    <input type="text" class="form-control" name="password2" placeholder="Konfirmasi Password">
-   </div>
-
-   <div class="form-group">
-    <label for="">Pilih Jenis Member</label>
-    <div class="form-check">
-    <input class="form-check-input" type="radio" name="membership" id="membergratis" value="2" checked>
-        <label class="form-check-label" for="membergratis">Free Member</label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="membership" id="memberberbayar" value="3">
-        <label class="form-check-label" for="memberberbayar">Paid Member</label>
-    </div>
-</div>
-
-
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
-<button type="submit" class="btn btn-primary btn-block">Daftar</button>
-    <?php form_close() ?>
-
-</div>
-</div>
-</p>
 </div>
 </div>
 </div>
 
-<br>
 <br>
 <br>
 <br>
@@ -181,32 +128,32 @@ div.transbox p {
 <br>
 
 <div id="footer" align="center">
-    <span class="success style17">&copy; STR_WEB 2018. CodeIgniter. All rights reserved. 		</span><br />
-    Copyright &copy; 2018
+    <span class="success style17">&copy; STR_WEB 2018. CodeIgniter. All rights reserved.    </span><br />
+    Copyright &copy; 2017
 Designed by Muhammad Satria R P</div>
 </div>
 
  <script>
 $(document).ready(function(){
     $('body').scrollspy({target: ".navbar", offset: 50});   
-	$("#myNavbar a").on('click', function(event) {
-	if (this.hash !== "") {
-	 event.preventDefault();
-	 var hash = this.hash;
-	 $('html, body').animate({
+  $("#myNavbar a").on('click', function(event) {
+  if (this.hash !== "") {
+   event.preventDefault();
+   var hash = this.hash;
+   $('html, body').animate({
       scrollTop: $(hash).offset().top
     }, 800, function(){
-	  window.location.hash = hash;
+    window.location.hash = hash;
     });
 
   }
   });
 });
     </script>
-	
+  
 
 <script src="<?php echo base_url('assets/js/jquery.js')?>"></script>
-<!-- <script src="<?php //echo base_url('assets/js/bootstrap.min.js')?>"></script> -->
+<script src="<?php echo base_url('assets/js/bootstrap.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/smoothscroll.js')?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.nav.js')?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.parallax.js')?>"></script>
@@ -214,14 +161,8 @@ $(document).ready(function(){
 <script src="<?php echo base_url('assets/js/isotope.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/wow.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/counter.js')?>"></script>
-<!-- <script src="<?php //echo base_url('assets/js/custom.js')?>"></script> -->
-<script src="<?php echo base_url() ?>assets/js/jquery-1.9.1.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url('assets/js/custom.js')?>"></script>
 
-    <!-- Plugins -->
-    <script src="<?php echo base_url() ?>assets/js/holder.min.js"></script>
-
-    <!-- Custom -->
-    <script src="<?php echo base_url() ?>assets/js/custom.js"></script>
 </body>
 </html>
+

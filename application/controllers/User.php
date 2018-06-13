@@ -60,15 +60,17 @@ if($this->form_validation->run() === FALSE){
         $user_data = array(
             'user_id' => $user_id,
             'username' => $username,
-            'logged_in' => true
+            'logged_in' => true,
+            'level' => $this->user_model->get_user_level($user_id)
+
         );
 
     $this->session->set_userdata($user_data);
 
         // Set message
-        $this->session->set_flashdata('user_loggedin', 'You are now logged in');
+        $this->session->set_flashdata('user_loggedin', 'Selamat Datang'. $username );
 
-        redirect('Welcome/tugas');
+        redirect('user/dashboard');
     } else {
         // Set message
         $this->session->set_flashdata('login_failed', 'Login is invalid');
@@ -90,6 +92,23 @@ if($this->form_validation->run() === FALSE){
 
         redirect('user/login');
     }
+
+        // Dashboard
+    public function dashboard(){
+
+        if(!$this->session->userdata('logged_in')){
+            redirect('user/login');
+        }
+
+        $username = $this->session->userdata('username');
+
+        // Dapatkan detail user
+        $data['user'] = $this->user_model->get_user_details( $username );
+
+        // Load dashboard
+        $this->load->view('dashboard', $data);
+    }
+
 
 }
 
