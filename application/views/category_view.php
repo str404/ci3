@@ -92,16 +92,25 @@ div.transbox p {
           <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
       <ul class="dropdown-menu">
+         <?php
+          if($this->session->userdata('level')==3||$this->session->userdata('level')==1){
+          ?>
             <li><a href="<?php echo site_url('Blog/create_action')?>">Create</a></li>
-            <li><a href="<?php echo site_url('Blog/bio')?>">Beranda</a></li>
-            <li><a href="#section4">Biodata</a></li>
-            <li><a href="#section5">Game Favorit</a></li>
-            <li><a href="#section1">Web Favorit</a></li>
+             <?php
+            }
+            ?>
+            <li><a href="<?php echo site_url('Blog')?>">Beranda</a></li>
           </ul>
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Kategori <span class="caret"></span></a>
       <ul class="dropdown-menu">
+         <?php
+          if($this->session->userdata('level')==3||$this->session->userdata('level')==1){
+          ?>
             <li><a href="<?php echo site_url('Category/create')?>">Buat kategori</a></li>
+             <?php
+            }
+            ?>
             <li><a href="<?php echo site_url('Category')?>">list kategori</a></li>
           </ul>
         </li>
@@ -197,7 +206,13 @@ div.transbox p {
 
                         <td>date_created</td>
 
-                        <td>action</td>
+                        <?php
+          if($this->session->userdata('level')==1){
+          ?>
+          <td>action</td>
+           <?php
+            }
+            ?>
 
 
                   </tr>
@@ -229,9 +244,14 @@ div.transbox p {
                         <td><?php echo $deskripsi;?> </td>
 
                         <td><?php echo $date_created;?> </td>
-
+                        <?php
+          if($this->session->userdata('level')==1){
+          ?>
                         <td><a href="<?php echo site_url ('Category/hapus/'.$id_kategori); ?>" class="btn btn-danger btn-xs pull-right" role="button">Delete </i></a>
       <a href=" <?php echo site_url('Category/edit/'.$id_kategori); ?>" class="btn btn-primary btn-xs" role="button">Edit </i></a></td>
+      <?php
+    }
+    ?>
 
                   </tr>
 
@@ -241,6 +261,9 @@ div.transbox p {
 
       </table>
 
+</div>
+
+</div>
 </div>
 
 <div class="container-fluid">
@@ -257,8 +280,14 @@ div.transbox p {
       <h4 class=""> <?php echo $i->nama ?></h4>
       <hr>
       <p class=""> <?php echo $i->deskripsi ?> </p>
+      <?php
+          if($this->session->userdata('level')==1){
+          ?>
       <a href="<?php echo site_url ('Category/hapus/'.$i->id_kategori); ?>" class="btn btn-danger btn-xs pull-right" role="button">Delete </i></a>
       <a href=" <?php echo site_url('Category/edit/'.$i->id_kategori); ?>" class="btn btn-primary btn-xs" role="button">Edit </i></a>
+      <?php
+    }
+    ?>
     </div>
   </div>
 </div>

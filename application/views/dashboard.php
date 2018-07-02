@@ -90,7 +90,13 @@ div.transbox p {
           <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
       <ul class="dropdown-menu">
+          <?php
+          if($this->session->userdata('level')==3||$this->session->userdata('level')==1){
+          ?>
             <li><a href="<?php echo site_url('Blog/create_action')?>">Create</a></li>
+            <?php
+            }
+            ?>
             <li><a href="<?php echo site_url('Blog/bio')?>">Beranda</a></li>
             <li><a href="#section4">Biodata</a></li>
             <li><a href="#section5">Game Favorit</a></li>
@@ -99,7 +105,13 @@ div.transbox p {
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Kategori <span class="caret"></span></a>
       <ul class="dropdown-menu">
+        <?php
+          if($this->session->userdata('level')==3||$this->session->userdata('level')==1){
+          ?>
             <li><a href="<?php echo site_url('Category/create')?>">Buat kategori</a></li>
+            <?php
+            }
+            ?>
             <li><a href="<?php echo site_url('Category')?>">list kategori</a></li>
           </ul>
         </li>
@@ -114,7 +126,30 @@ div.transbox p {
 <div class="transbox">
 <div class="container">
    <div class="py-5 text-center">
-       <div class="style7"><h2>Selamat datang <?php echo $user->nama ?></h2></div>
+    <?php
+          if($this->session->userdata('level')==1){
+          ?>
+       <div class="style7"><h2>Selamat datang Admin <?php echo $user->nama ?></h2></div>
+       <?php
+            }
+        ?>
+
+    <?php
+          if($this->session->userdata('level')==2){
+          ?>
+       <div class="style7"><h2>Selamat datang Member <?php echo $user->nama ?></h2></div>
+       <?php
+            }
+        ?>
+
+    <?php
+          if($this->session->userdata('level')==3){
+          ?>
+       <div class="style7"><h2>Selamat datang Paid Member <?php echo $user->nama ?></h2></div>
+       <?php
+            }
+        ?>
+
    </div>
 </div>
 </div>

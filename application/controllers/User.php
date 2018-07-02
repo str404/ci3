@@ -101,8 +101,10 @@ if($this->form_validation->run() === FALSE){
         }
 
         $username = $this->session->userdata('username');
+        $user_id = $this->session->userdata('level');
 
         // Dapatkan detail user
+         $data['level'] = $this->user_model->get_user_level( $user_id );
         $data['user'] = $this->user_model->get_user_details( $username );
 
         // Load dashboard

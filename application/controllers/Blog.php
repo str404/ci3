@@ -26,11 +26,16 @@ class Blog extends CI_Controller {
 		$this->load->helper(array('url','form'));
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->model('user_model');
  
 	}
 
 	public function index()
-	{
+	{	
+		$user_id = $this->session->userdata('level');
+
+        // Dapatkan detail user
+         $data['level'] = $this->user_model->get_user_level( $user_id );
 		$data['blog'] = $this->blog_data->get_data()->result();
 		$this->load->view('Blog',$data);
 	}

@@ -90,8 +90,14 @@ div.transbox p {
           <li><a href="<?php echo site_url('Welcome/Tugas')?>">&ensp;&ensp;&ensp;&ensp;Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
       <ul class="dropdown-menu">
+        <?php
+          if($this->session->userdata('level')==3||$this->session->userdata('level')==1){
+          ?>
             <li><a href="<?php echo site_url('Blog/create_action')?>">Create</a></li>
-            <li><a href="<?php echo site_url('Blog/bio')?>">Beranda</a></li>
+            <?php
+            }
+            ?>
+            <li><a href="<?php echo site_url('Blog')?>">Beranda</a></li>
             <li><a href="#section4">Biodata</a></li>
             <li><a href="#section5">Game Favorit</a></li>
             <li><a href="#section1">Web Favorit</a></li>
@@ -99,7 +105,13 @@ div.transbox p {
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Kategori <span class="caret"></span></a>
       <ul class="dropdown-menu">
+        <?php
+          if($this->session->userdata('level')==3||$this->session->userdata('level')==1){
+          ?>
             <li><a href="<?php echo site_url('Category/create')?>">Buat kategori</a></li>
+            <?php
+            }
+            ?>
             <li><a href="<?php echo site_url('Category')?>">list kategori</a></li>
           </ul>
         </li>
@@ -187,7 +199,14 @@ div.transbox p {
   <p>
     <?php echo $u->konten ?>
 </p>
-<p align="center"><?php echo anchor('Blog/edit/'.$u->id,'Edit'); ?>&ensp;&ensp;&ensp;<?php echo anchor('Blog/hapus/'.$u->id,'Hapus'); ?>  </p>
+<p align="center"><?php
+          if($this->session->userdata('level')==1){
+          ?>
+          <?php echo anchor('Blog/edit/'.$u->id,'Edit'); ?>&ensp;&ensp;&ensp;<?php echo anchor('Blog/hapus/'.$u->id,'Hapus'); ?>  
+          <?php
+            }
+            ?>
+        </p>
 <?php } ?>
 </div>
 </div>

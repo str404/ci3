@@ -6,6 +6,7 @@
         $this->load->helper(array('url','form'));
         $this->load->model('Category_model');
         $this->load->library('pagination');
+        $this->load->model('user_model');
     }
 
    //  public function index()

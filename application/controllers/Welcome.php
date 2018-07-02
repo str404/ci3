@@ -18,6 +18,16 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct()
+    {
+        parent::__construct();
+                
+        $this->load->library('form_validation');
+        $this->load->helper('MY');
+        $this->load->model('user_model');
+    }
+
 	public function index()
 	{
 		$this->load->view('welcome_message');
@@ -36,7 +46,11 @@ class Welcome extends CI_Controller {
 		$this->load->view('home');
 	}
 	public function Tugas(){
-            $this->load->view('Web_Pribadi');
+		$user_id = $this->session->userdata('level');
+
+        // Dapatkan detail user
+         $data['level'] = $this->user_model->get_user_level( $user_id );
+            $this->load->view('Web_Pribadi', $data);
 	}
 
 

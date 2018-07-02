@@ -91,7 +91,13 @@ div.transbox p {
           <li><a href="#section4">&ensp;&ensp;&ensp;&ensp;Home</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Blog <span class="caret"></span></a>
       <ul class="dropdown-menu">
+        <?php
+          if($this->session->userdata('level')==3||$this->session->userdata('level')==1){
+          ?>
             <li><a href="<?php echo site_url('Blog/create_action')?>">Create</a></li>
+             <?php
+            }
+            ?>
             <li><a href="#section1">Biodata</a></li>
             <li><a href="#section31">Game Favorit</a></li>
             <li><a href="#section32">Web Favorit</a></li>
@@ -99,7 +105,13 @@ div.transbox p {
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">&ensp;&ensp;&ensp;&ensp;Kategori <span class="caret"></span></a>
       <ul class="dropdown-menu">
+        <?php
+          if($this->session->userdata('level')==3||$this->session->userdata('level')==1){
+          ?>
             <li><a href="<?php echo site_url('Category/create')?>">Buat kategori</a></li>
+            <?php
+            }
+            ?>
             <li><a href="<?php echo site_url('Category')?>">list kategori</a></li>
           </ul>
         </li>
@@ -192,7 +204,7 @@ div.transbox p {
     <br>
     <div align="center"><img src="<?php echo base_url('assets/gambar/str/1.jpg" alt="#" width="500')?>" ></div>
   <p align="center">
-    Artikel ini akan membahasa tentang profil saya, mulai dari nama, tanggal lahir, asal, jenjang pendidikan dan lain-lain. Silahkan mengunjungi halaman ini... <a href="<?php echo site_url('Blog/Bio#section4')?>">Selengkapnya</a>
+    Artikel ini akan membahasa tentang profil saya, mulai dari nama, tanggal lahir, asal, jenjang pendidikan dan lain-lain. Silahkan mengunjungi halaman ini... <a href="<?php echo site_url('Blog#section4')?>">Selengkapnya</a>
 </p>
 </div>
 </div>
@@ -206,7 +218,7 @@ div.transbox p {
 <div align="center"><img src="<?php echo base_url('assets/gambar/str/lis.jpg" alt="#" width="500')?>" ></div>
 <br>
 <div align="center"><img src="<?php echo base_url('assets/gambar/str/5.jpg" alt="#" width="500')?>" ></div>
-<p align="center"> Berikut adalah artikel yang akan membahasa tentang game-game apa saja yang menjadi favorit saya.... <a href="<?php echo site_url('Blog/Bio#section5')?>">Selengkapnya</a></p>
+<p align="center"> Berikut adalah artikel yang akan membahasa tentang game-game apa saja yang menjadi favorit saya.... <a href="<?php echo site_url('Blog#section5')?>">Selengkapnya</a></p>
 </div>
 </div>
 
@@ -220,7 +232,7 @@ div.transbox p {
 <br><br><img src="<?php echo base_url('assets/gambar/str/1cak.png" alt="#" width="500')?>" >
 </div>
 <p align="center">
-  Pada artikel ke 3 ini saya akan memberi tahu website yang sering dikunjungi, apa aja website nya ? Monggo di cek...<a href="<?php echo site_url('Blog/Bio#section1')?>">Selengkapnya</a>
+  Pada artikel ke 3 ini saya akan memberi tahu website yang sering dikunjungi, apa aja website nya ? Monggo di cek...<a href="<?php echo site_url('Blog#section1')?>">Selengkapnya</a>
 </p>
 </div>
 </div>
